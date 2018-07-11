@@ -5,11 +5,13 @@ class Enemy {
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    constructor(x,y,speed) {
+    constructor(x,y,speed, width, height) {
         this.sprite = 'images/enemy-bug.png';
         this.x = x;
         this.y = y;
         this.speed = speed;
+        this.width = width;
+        this.height = height;
     }
     
 
@@ -24,7 +26,14 @@ class Enemy {
     // Updating enemy's position when it comes to the end of the board
         if (this.x >= 505){
             this.x = -150;
-        }    
+        }
+        
+        // Check for collision between player and enemies
+        if (player.x < this.x + 60 && player.x + 37 > this.x && player.y < this.y + 25 && 30 + player.y > this.y) {
+            player.x = 200;
+            player.y = 405;
+            window.location.reload();
+        }
 
     }
 
@@ -39,10 +48,12 @@ class Enemy {
 // a handleInput() method.
 
 class Player {
-    constructor(x,y){
+    constructor(x,y,width,height){
         this.sprite = 'images/char-boy.png';
         this.x = x;
         this.y = y;
+        this.width = width;
+        this.height = height;
     }
 
     update() {
@@ -61,9 +72,24 @@ class Player {
 
         if (this.y < -10){
             this.y = -10;
+            setTimeout(() => {
+                // return the player to their initial position
+                this.x = 200;
+                this.y = 404;
+                // stop all enemies
+                for (const enemy of allEnemies) {
+                    enemy.speed = 0;
+                }
+                // Open modal window
+                    const winText = document.getElementById('modalWintext');
+                    winText.innerHTML = 'Close the window and hit a bug to restart.' ;
+                    const modal = document.getElementById('modalWin');
+                    modal.classList.add('open');
+
+                // print the victory message on the screen
+                this.render();
+            }, 100);
         }
-
-
     }
 
     render() {
@@ -92,21 +118,26 @@ class Player {
     }
 }
 
-
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [];
-const enemyOne = new Enemy(-50, 60, Math.floor(Math.random() * 100) + 100); 
-const enemyTwo = new Enemy(-100, 145, Math.floor(Math.random() * 100) + 100);
-const enemyThree = new Enemy(-200, 225, Math.floor(Math.random() * 100) + 100);
-const enemyFour = new Enemy(-300, 60, enemyOne.speed);
-const enemyFive = new Enemy(-350, 145, enemyTwo.speed);
-const enemySix = new Enemy(-450, 225, enemyThree.speed);
+const enemyOne = new Enemy(-50, 60, Math.floor(Math.random() * 100) + 100, 100 , 100); 
+const enemyTwo = new Enemy(-100, 145, Math.floor(Math.random() * 100) + 100, 100 , 100);
+const enemyThree = new Enemy(-200, 225, Math.floor(Math.random() * 100) + 100, 100, 100);
+const enemyFour = new Enemy(-300, 60, enemyOne.speed,100, 100);
+const enemyFive = new Enemy(-350, 145, enemyTwo.speed,100, 100);
+const enemySix = new Enemy(-450, 225, enemyThree.speed,100, 100);
 // Pushing enemies into allEnemies array
 allEnemies.push (enemyOne,enemyTwo,enemyThree,enemyFour,enemyFive,enemySix);
 console.log(allEnemies);
 // Place the player object in a variable called player
 const player = new Player(200,405);
+
+// Close modal window
+function closeModal() {
+    modal = document.getElementById('modalWin');
+    modal.classList.remove('open');
+}
 
 
 // This listens for key presses and sends the keys to your
@@ -121,3 +152,4 @@ document.addEventListener('keyup', (e) => {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
