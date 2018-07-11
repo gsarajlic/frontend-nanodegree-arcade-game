@@ -5,6 +5,7 @@
 * [Instructions](#instructions)
   * [How to Run](#how-to-run)
   * [How to Play](#how-to-play)
+* [Credits](#Credits)
 
 ## Introduction
 This is a version of the classic game Frogger, developed as a part of Udacity Front End Web development scholarship.
@@ -35,3 +36,6 @@ and watch for the the enemy bugs.
 
       When you win a game, there will be a window with the congratulation note. Press close button and to restart a game
       you have to hit a bug with your character.
+
+## Credits
+I would like to thank whole Udacity community esspecially mrs. Antonella Dean which study jam video I used to develop this game. Also I have borrowed some ideas from her work.
