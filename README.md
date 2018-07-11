@@ -1,6 +1,37 @@
-frontend-nanodegree-arcade-game
-===============================
+# Classic Arcade Game Clone Project
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+## Table of Contents
+* [Introduction](#introduction)
+* [Instructions](#instructions)
+  * [How to Run](#how-to-run)
+  * [How to Play](#how-to-play)
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+## Introduction
+This is a version of the classic game Frogger, developed as a part of Udacity Front End Web development scholarship.
+
+## Instructions
+The game board consists of :
+* two rows of grass on the bottom,
+* three rows of paved road in the middle
+* and one row of water at the top.
+
+The player's character is at the bottom row of grass and to win
+the game, you need to safely take it to the water at the top of the board,
+and watch for the the enemy bugs.
+
+  * #### How to Run
+
+      To run the game, download it and double click on the `index.html` file or visit
+
+  * #### How to Play
+
+      Using the 4 arrow keys, `up`, `down`, `left`, and `right`, move the
+      character all the way from the bottom of the board to the top to reach
+      the water.
+
+      If you hit a bug your character will be returned to start position.
+
+      If you manage to reach the water, you win the game!
+
+      When you win a game, there will be a window with the congratulation note. Press close button and to restart a game
+      you have to hit a bug with your character.
