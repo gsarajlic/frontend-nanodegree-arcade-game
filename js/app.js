@@ -35,7 +35,6 @@ class Enemy {
     checkCollision(player) {
         
         if (player.x < (this.x + 77) && (player.x + 80) > this.x && player.y < (this.y + 20) && (player.y + 20) > this.y) {
-            alert('stop');
             player.x = 200;
             player.y = 405;
             window.location.reload();
@@ -132,7 +131,7 @@ const enemyFive = new Enemy(-350, 145, enemyTwo.speed);
 const enemySix = new Enemy(-450, 225, enemyThree.speed);
 // Pushing enemies into allEnemies array
 allEnemies.push(enemyOne,enemyTwo, enemyThree, enemyFour, enemyFive, enemySix);
-console.log(allEnemies);
+
 // Place the player object in a variable called player
 const player = new Player(200, 405);
 
